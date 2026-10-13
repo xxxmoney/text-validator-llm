@@ -1,0 +1,23 @@
+
+name: Text Validator LLM
+
+services:
+  text-validator-llm:
+    build:
+      context: "."
+      target: "build"
+    command: "npm run start:dev"
+    ports:
+        - "667:667"
+    volumes:
+        - ".:/app"
+        - "/app/node_modules"
+    environment:
+      - "HOST=0.0.0.0"
+      - "PORT=667"
+      - "CHOKIDAR_USEPOLLING=true"
+      - "WATCHPACK_POLLING=true"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # Preserve host access to local machine
+    dns:
+      - "8.8.8.8" # Fix windows issue
