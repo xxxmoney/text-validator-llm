@@ -3,8 +3,6 @@ import { AppModule } from './app.module.js';
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 const app = await NestFactory.create(AppModule);
-await app.listen(process.env.PORT ?? 667);
-
 const swagger = new DocumentBuilder()
     .setTitle('Text Validator LLM API')
     .setDescription('API for validating text via LLM')
@@ -12,4 +10,8 @@ const swagger = new DocumentBuilder()
     .build();
 const document = SwaggerModule.createDocument(app, swagger);
 SwaggerModule.setup('api', app, document);
+
+await app.listen(process.env.PORT ?? 667);
+
+
 
