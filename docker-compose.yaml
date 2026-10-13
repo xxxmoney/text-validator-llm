@@ -1,5 +1,5 @@
 
-name: MCP LLM
+name: Text Validator LLM
 
 services:
   text-validator-llm:
