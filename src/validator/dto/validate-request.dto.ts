@@ -7,5 +7,5 @@ export class ValidateRequestDto {
 
     @IsString()
     @IsNotEmpty()
-    validation: string;
+    rules: string;
 }
