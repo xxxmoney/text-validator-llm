@@ -19,9 +19,9 @@ export class ValidatorService {
         this.logger = new Logger(ValidatorService.name);
         this.configService = configService;
 
-        this.baseUrl = this.configService.get('BASE_URL') as string;
-        this.model = this.configService.get('MODEL') as string;
-        this.token = this.configService.get('TOKEN') as string;
+        this.baseUrl = this.configService.getOrThrow<string>('BASE_URL');
+        this.model = this.configService.getOrThrow<string>('MODEL');
+        this.token = this.configService.getOrThrow<string>('TOKEN');
         this.client = new OpenAI({
             baseURL: this.baseUrl,
             apiKey: this.token,
