@@ -2,7 +2,7 @@
 name: MCP LLM
 
 services:
-  text-validators-llm:
+  text-validator-llm:
     build:
       - context: "."
       - target: "build"
