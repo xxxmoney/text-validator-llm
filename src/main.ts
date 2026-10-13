@@ -10,7 +10,7 @@ const swagger = new DocumentBuilder()
     .setVersion('1.0')
     .build();
 const document = SwaggerModule.createDocument(app, swagger);
-SwaggerModule.setup('api', app, document);
+SwaggerModule.setup('docs', app, document);
 
 app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
