@@ -1,10 +1,10 @@
 {
-  "name": "project",
-  "version": "0.0.1",
+  "name": "text-validator-llm",
+  "version": "1.0.0",
   "description": "",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "ISC",
   "type": "module",
   "scripts": {
     "build": "nest build",
