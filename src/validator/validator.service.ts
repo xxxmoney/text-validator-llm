@@ -20,8 +20,8 @@ export class ValidatorService {
         this.configService = configService;
 
         this.baseUrl = this.configService.get('BASE_URL') as string;
-        this.model = this.configService.get('TOKEN') as string;
-        this.token = this.configService.get('MODEL') as string;
+        this.model = this.configService.get('MODEL') as string;
+        this.token = this.configService.get('TOKEN') as string;
         this.client = new OpenAI({
             baseURL: this.baseUrl,
             apiKey: this.token,
@@ -29,7 +29,7 @@ export class ValidatorService {
     }
 
     async validate(request: ValidateRequestDto): Promise<ValidateResponseDto> {
-        this.logger.debug(`Using env: baseUrl: '${this.baseUrl}', token: '${this.token}', model: '${this.model}'`);
+        this.logger.debug(`Using env: baseUrl: '${this.baseUrl}', model: '${this.model}'`);
         this.logger.debug(`Validator validate request body ${JSON.stringify(request)}`);
 
         const response = await this.client.chat.completions.create({
@@ -37,15 +37,15 @@ export class ValidatorService {
             messages: [
                 {
                     role: "system",
-                    content: `${PROMPT}: RULE: ${request.rules}'`,
+                    content: `${PROMPT}: RULE: ${request.rules}`,
                 },
                 { role: "user", content: request.text },
             ],
-        });
+        }); // TODO: add try catch to handle specific errors
         const output = response.choices[0]?.message?.content;
         this.logger.debug(`LLM response ${JSON.stringify(output)}`);
 
-        return { isValid: output === 'true' };
+        return { isValid: output === 'true' }; // TODO: better check or try to enforce llm output better, but so far it works
     }
 
 }

@@ -19,10 +19,10 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "types": ["vitest/globals", "node"],
-    "watchOptions": {
-      "watchFile": "dynamicPriorityPolling",
-      "watchDirectory": "dynamicPriorityPolling",
-      "fallbackPolling": "dynamicPriority"
-    }
+  },
+  "watchOptions": {
+    "watchFile": "dynamicPriorityPolling",
+    "watchDirectory": "dynamicPriorityPolling",
+    "fallbackPolling": "dynamicPriority"
   }
 }
