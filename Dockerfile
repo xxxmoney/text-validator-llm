@@ -21,6 +21,6 @@ RUN npm clean-install --omit=dev
 
 COPY --from=build /app/dist ./dist
 
-EXPOSE 666
+EXPOSE 667
 
 CMD ["npm", "run", "start"]
