@@ -5,7 +5,11 @@ import {ValidateResponseDto} from "./dto/validate-response.dto.js";
 
 @Controller('validator')
 export class ValidatorController {
-    constructor(private readonly validatorService: ValidatorService) {}
+    private readonly validatorService: ValidatorService;
+
+    constructor(validatorService: ValidatorService) {
+        this.validatorService = validatorService;
+    }
 
     @Post('validate')
     postValidate(@Body() request: ValidateRequestDto): Promise<ValidateResponseDto> {
